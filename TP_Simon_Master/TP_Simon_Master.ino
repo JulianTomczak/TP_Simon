@@ -74,7 +74,7 @@ void cantidadDeJugadores(){
     switch(tecla){
       case '1':jugadores=1;break;
       case '2':jugadores=2;break;
-      default:;
+      default:tecla=NO_KEY;
     }
   }
 }
@@ -110,7 +110,7 @@ void nivel(){
         colores=5;
         reintentos=1;
       };break;
-      default:;
+      default:tecla=NO_KEY;
     }
   }
 }
@@ -134,11 +134,11 @@ void juego(){
        Wire.beginTransmission(ESCLAVO);
        Wire.write(secuenciaActual[secuencia]); //Envío el aleatorio    
        Wire.endTransmission();
+       secuencia++;
      }  
      if(jugadores==2){
       cambiarJugador();
      }
-     secuencia++;
      //le da un tiempo al jugador para que pueda jugar
      delay(tiempo);
      tiempo=tiempo+1000;
